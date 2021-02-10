@@ -9,13 +9,13 @@ Includes base WebDriverIO project with reports for a simple POC
 
 Need node installed
 
-# How to run tests:
+## How to run tests:
 ```
 Run tests: 
 npx wdio wdio.conf.js
 ```
 
-# How to dedug tests:
+## How to dedug tests:
 ```
 How to debug:
 https://webdriver.io/docs/api/browser/debug/
