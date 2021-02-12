@@ -152,28 +152,33 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter.html
     outputDir: './test-report/output',
     
-    reporters: [
-        'dot',
-        ['junit', {
-            outputDir: './test-report/junit-results/',
-            outputFileFormat: function(options) { // optional
-                return `results-${options.cid}.${options.capabilities}.xml`
-            }
-        }]
-    ],
-
     // reporters: [
     //     'dot',
-    //     'spec',
-    //     [
-    //         'allure',
-    //         {
-    //             outputDir: './test-report/allure-results/',
-    //             disableWebdriverStepsReporting: true,
-    //             disableWebdriverScreenshotsReporting: false,
+    //     ['junit', {
+    //         outputDir: './test-report/junit-results/',
+    //         errorOptions: {
+    //             error: 'message',
+    //             failure: 'message',
+    //             stacktrace: 'stack'
     //         },
-    //     ],
+    //         outputFileFormat: function(options) { // optional
+    //             return `results-${options.cid}.${options.capabilities}.xml`
+    //         }
+    //     }]
     // ],
+
+    reporters: [
+        'dot',
+        'spec',
+        [
+            'allure',
+            {
+                outputDir: './test-report/allure-results/',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
+            },
+        ],
+    ],
 
     services: [
         [
