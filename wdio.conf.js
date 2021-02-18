@@ -29,9 +29,10 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: [
-        'test/specs/*.js'
-    ],
+    //specs: [
+    //    'test/specs/performance/*.js'
+    //],
+    specs: Array(100).fill('./test/specs/performance/*.js'),
 
     suites: {
         tests: [
@@ -65,6 +66,7 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
+    headless: true,
     capabilities: [{
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
@@ -75,7 +77,19 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-        browserName: 'chrome',
+        
+        browserName: 'MicrosoftEdge',
+        
+        'ms:edgeOptions': {
+            // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
+            args: ['-headless']
+          }, 
+
+        'moz:firefoxOptions': {
+            // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
+            args: ['-headless']
+          }, 
+        
         'goog:chromeOptions': {
             args: cap,
             prefs: {
@@ -194,7 +208,7 @@ exports.config = {
             },
         ],
         // Uncomment to run tests with Selenium Standalone, if you have JDK installed.
-        ['chromedriver'],
+        ['MSEdgeDriver'], // chromedriver, geckodriver
     ],
 
     //
